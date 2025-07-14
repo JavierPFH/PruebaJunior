@@ -1,5 +1,9 @@
 package com.javier.demo.model;
 
+import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,15 +31,20 @@ public class Libros {
     @NotNull(message = "El año de publicacion es obligatorio.") // Asegura que no acepta valores nulos
     private int anioPublicacion;
 
+    @NotNull(message = "La fecha de lectura.") // Asegura que no acepta valores nulos
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy", timezone = "Atlantic/Canary")
+    private Date dateRead;
+
     // Por si acaso
     public Libros() {}
 
     // Contructor de los campos
-    public Libros(int id, String titulo, String autor, int anioPublicacion) {
+    public Libros(int id, String titulo, String autor, int anioPublicacion, Date dateRead) {
         this.id = id;
         this.titulo = titulo;
         this.autor = autor;
         this.anioPublicacion = anioPublicacion;
+        this.dateRead = dateRead;
     }
 
     //Getters y Setters
@@ -69,6 +78,14 @@ public class Libros {
 
     public void setAnioPublicacion(int anioPublicacion) {
         this.anioPublicacion = anioPublicacion;
+    }
+
+    public Date getDateRead() {
+        return dateRead;
+    }
+
+    public void setDateRead(Date dateRead) {
+        this.dateRead = dateRead;
     }
 
 }
