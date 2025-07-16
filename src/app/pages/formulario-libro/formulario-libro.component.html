@@ -1,0 +1,29 @@
+<!-- formulario-libro.component.html -->
+<div class="overlay">
+  <div class="overlay-content">
+    <h2>{{ tituloFormulario }}</h2>
+
+    <form>
+      <label for="titulo">Título del Libro:</label>
+      <input type="text" [(ngModel)]="titulo" id="titulo" name="titulo">
+      
+      <label for="autor">Autor:</label>
+      <input list="autores" [(ngModel)]="autor" id="autor" name="autor"/>
+        <datalist id="autores">
+        <option *ngFor="let autor of autores" [value]="autor"></option>
+      </datalist>
+      
+      <label for="publicacion">Año de Publicacion:</label>
+      <input type="number" [(ngModel)]="publicacion" id="publicacion" name="publicacion">
+
+      <label for="lectura">fecha de lectura:</label>
+      <input type="date" [(ngModel)]="fecha" id="fecha" name="fecha">
+      
+      <div class="buttonContainer">
+        <button type="button" class="guardarbtn" (click)="guardarLibro()">Guardar</button>
+        <button type="button" class="cerrarbtn" (click)="cerrarFormulario()">Cerrar</button>
+      </div>
+    </form>
+    
+  </div>
+</div>

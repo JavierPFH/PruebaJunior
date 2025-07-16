@@ -1,0 +1,74 @@
+/* Fondo oscuro que cubre toda la pantalla */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Asegura que esté por encima de todo */
+}
+
+/* Contenedor del contenido del modal */
+.overlay-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+  border: 2px solid #FEAF00;
+}
+
+/* Estilo del formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  height:fit-content;
+}
+
+input, select {
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid #FEAF00;
+  border-radius: 10px;
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 3rem;
+}
+
+button {
+  width: 160px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: transparent;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.guardarbtn {
+  border: 2px solid #2ED573;
+}
+
+.cerrarbtn {
+  border: 2px solid #B3261E;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: none;
+}
