@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Libros</title>
+</head>
+<body>
+  <!-- Formulario crear -->
+  <div class="cabecera">
+    <button class="crearbtn" title="Crear" (click)="abrirFormularioCrear()">Añadir Libro</button>
+    <app-formulario-libro 
+      *ngIf="mostrarFormulario" 
+      [tituloFormulario]="tituloFormulario"
+      [libroActualizar]="libroActualizar"
+      [autores]="autores"
+      (cerrar)="cerrarFormulario()"
+    ></app-formulario-libro>
+
+    <!-- filtro -->
+    <div class="buscar-frame">
+       <input type="text" [(ngModel)]="filtroTexto" placeholder="Filtrar por autor o fecha..."/>
+       <button class="buscarbtn" title="Buscar" (click)="filtro()">
+        <i class="bi bi-search"></i>
+      </button>
+      <button class="limpiarbtn" title="Limpiar" (click)="limpiarFiltro()">
+        <i class="bi bi-x-circle"></i>
+      </button>
+    </div>
+
+  </div>
+
+  <div *ngIf="listaLibros && listaLibros.length > 0"> <!-- Comprueba que llega informacion -->
+    <ul class="libro-lista">
+      <li class="libro-header">
+        <span>Título</span>
+        <!-- <span>ID</span> -->
+        <span>Autor</span>
+        <span>Año</span>
+        <span>Lectura</span>
+        <span>Acciones</span>
+      </li>
+
+      <li class="libro-item" *ngFor="let libro of listaLibros"> <!--  Muestra los libros -->
+        <span>{{ libro.titulo }}</span>
+        <!-- <span>{{ libro.id }}</span> -->
+        <span>{{ libro.autor }}</span>
+        <span>{{ libro.anioPublicacion }}</span>
+        <span>{{ libro.dateRead }}</span>
+        <span class="acciones">
+          <button class="editarbtn" title="Editar" (click)="abrirFormularioActualizar(libro)">
+            <i class="bi bi-vector-pen"></i>
+          </button>
+          <button class="eliminarbtn" title="Eliminar" (click)="eliminarLibro(libro.id!)">
+            <i class="bi bi-trash"></i>
+          </button>
+        </span>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>
